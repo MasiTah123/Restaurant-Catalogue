@@ -1,0 +1,245 @@
+.catalog {
+  display: grid;
+  grid-row-gap: 16px;
+  grid-column-gap: 16px;
+}
+
+@media screen and (max-width: 779px) {
+  app-header header{
+    padding: 14px ;
+    
+  }
+  app-header .head{
+    height: 44px;
+  }
+
+  app-header .header-name{
+    margin: auto 10px;
+  }
+
+  app-header .navbar-button{
+    margin-left: auto;
+    width: 48px;
+    height: 44px;
+  }
+
+  .fa-bars{
+    margin: 0px auto;
+    width: 20px;
+    height: 20px;
+  }
+  .nav {
+    z-index: 10;
+    background: #C3AED6;
+    width: 60%;
+    position: absolute;
+
+    -webkit-transform: translate(-500px, 0);
+    transform: translate(-500px, 0);
+
+    transition: transform 0.3s ease;
+  }
+
+  .nav.open {
+    -webkit-transform: translate(0, 0);
+    transform: translate(0, 0);
+  }
+
+  app-nav .nav-item {
+    display: list-item;
+    list-style: none;
+    border-bottom: 1px solid #E0E0E0;
+    width: 100%;
+    text-align: left;
+  }
+
+  
+}
+
+@media screen and (max-width: 1000px) { 
+  .restaurant-catalog{
+    width: 95%;
+  }
+
+  .restaurant-menu {
+    width: 80%;
+  }
+
+  .detail {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .restaurant-poster {
+    width: 100%;
+    height: 50%;
+  }
+
+  .restaurant-menu-section, .detail-content, .restaurant-review-section {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .detail-content {
+    margin-top: 10px;
+  }
+  
+}
+
+
+
+@media screen and (min-width: 780px) {
+  .navbar-button {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 560px) {
+  .jumbotron-head {
+    font-size: 20px;
+  }
+
+  .jumbotron-tagline {
+    font-size: 10px;
+  }
+
+  .header-name{
+    font-size: 20px;
+  }
+
+  .copyright-content{
+    font-size: 18px;
+  }
+
+  .restaurant-detail h3 {
+    font-size: 24px;
+  }
+
+  .restaurant-detail h4 {
+    font-size: 18px;
+  }
+
+  
+  .restaurant-menu {
+    display: block;
+    width: 100%;
+  }
+
+  .restaurant-food {
+    margin-bottom: 15px;
+  }
+
+  .customer-review {
+    width: 100%;
+  }
+
+  .detail-content p, .restaurant-menu li{
+    font-size: 16px;
+  }
+
+  .add-review {
+    width: 100%;
+  }
+
+  .btn-submit {
+    width: 50%;
+  }
+}
+
+@media screen and (max-width: 390px) {
+  .jumbotron-head {
+    font-size: 18px;
+  }
+
+  .jumbotron-tagline {
+    font-size: 10px;
+  }
+
+  .restaurant-detail {
+    width: 95%;
+  }
+
+}
+
+@media screen and (max-width: 300px) {
+  app-header .header-name{
+    font-size: 16px;
+  }
+  .catalog-head{
+    font-size: 20px;
+  }
+
+  .restaurant-catalog{
+    padding: 10px;
+  }
+
+  .copyright-content{
+    font-size: 12px;
+  }
+
+  .restaurant-detail h3 {
+    font-size: 20px;
+  }
+
+  .restaurant-detail h4 {
+    font-size: 16px;
+  }
+
+  .detail-content p, .restaurant-menu li{
+    font-size: 14px;
+  }
+
+  
+}
+
+@media screen and (max-width: 350px) {
+  .copyright-content{
+    font-size: 14px;
+  }
+
+  .detail-head {
+    font-size: 18px;
+  }
+}
+
+@media screen and (min-width: 700px) {
+  .catalog {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    
+  }
+
+  
+}
+
+@media screen and (min-width: 1280px) {
+  .catalog {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .restaurant-catalog{
+    width: 90%;
+  }
+
+  
+}
+
+@media screen and (min-width: 1720px) {
+  .catalog {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .restaurant-catalog{
+    width: 90%;
+  }
+  
+}
+
+@media screen and (min-width: 2000px) {
+  .catalog {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
