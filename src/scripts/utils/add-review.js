@@ -1,4 +1,3 @@
-import Swal from 'sweetalert2';
 import RestaurantDataSource from '../../data/restaurant-resourceDB';
 
 const AddReview = {
@@ -21,18 +20,23 @@ const AddReview = {
 
       try {
         const addedReview = await RestaurantDataSource.addReviewCustomer(data);
-        Swal.fire({
-          title: 'Success!',
-          text: 'Success to add review',
-          icon: 'success',
-        });
+        import('sweetalert2')
+          .then((module) => module.default)
+          .then((Swal) => Swal.fire({
+            title: 'Success!',
+            text: 'Success to add review',
+            icon: 'success',
+          }));
+
         this._renderReviewAfterAdding(addedReview, reviewElement);
       } catch (err) {
-        Swal.fire({
-          title: 'Error!',
-          text: `${err}`,
-          icon: 'error',
-        });
+        import('sweetalert2')
+          .then((module) => module.default)
+          .then((Swal) => Swal.fire({
+            title: 'Error!',
+            text: `${err}`,
+            icon: 'error',
+          }));
       }
     });
   },
