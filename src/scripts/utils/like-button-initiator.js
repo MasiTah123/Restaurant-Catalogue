@@ -1,3 +1,4 @@
+import Swal from 'sweetalert2';
 import FavoriteRestaurantIdb from '../../data/favorite-restaurant-idb';
 import { createLikeButtonTemplate, createLikedButtonTemplate } from '../view/template/template-creator';
 
@@ -30,6 +31,11 @@ const LikeButtonInitiator = {
     const likeButton = document.querySelector('#likeButton');
     likeButton.addEventListener('click', async () => {
       await FavoriteRestaurantIdb.putRestaurant(this._restaurant);
+      Swal.fire({
+        title: 'Success!',
+        text: 'restaurant added to favorite',
+        icon: 'success',
+      });
       this._renderButton();
     });
   },
@@ -40,6 +46,11 @@ const LikeButtonInitiator = {
     const likeButton = document.querySelector('#likeButton');
     likeButton.addEventListener('click', async () => {
       await FavoriteRestaurantIdb.deleteRestaurant(this._restaurant.id);
+      Swal.fire({
+        title: 'Success!',
+        text: 'restaurant removed from favorite',
+        icon: 'success',
+      });
       this._renderButton();
     });
   },

@@ -1,3 +1,4 @@
+import Swal from 'sweetalert2';
 import RestaurantDataSource from '../../data/restaurant-resourceDB';
 
 const AddReview = {
@@ -13,13 +14,26 @@ const AddReview = {
 
     addForm.addEventListener('submit', async (event) => {
       event.preventDefault();
-      console.log(reviewElement);
       const Name = document.querySelector('#username').value;
       const Review = document.querySelector('#review-text').value;
+
       const data = this._combineData(id, Name, Review);
-      const addedReview = await RestaurantDataSource.addReviewCustomer(data);
-      console.log(addedReview);
-      this._renderReviewAfterAdding(addedReview, reviewElement);
+
+      try {
+        const addedReview = await RestaurantDataSource.addReviewCustomer(data);
+        Swal.fire({
+          title: 'Success!',
+          text: 'Success to add review',
+          icon: 'success',
+        });
+        this._renderReviewAfterAdding(addedReview, reviewElement);
+      } catch (err) {
+        Swal.fire({
+          title: 'Error!',
+          text: `${err}`,
+          icon: 'error',
+        });
+      }
     });
   },
 
