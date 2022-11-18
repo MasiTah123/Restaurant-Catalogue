@@ -1,7 +1,11 @@
 import CONFIG from '../../globals/config';
 
+const createErrorTemplate = (message) => `
+  <h3>${message}</h3>
+`;
+
 const createRestaurantItemTemplate = (restaurant) => `
-<article class="restaurant-item"> 
+<article class="restaurant-item">
   <div class="restaurant-item-upper">
     <img class="restaurant-item-thumbnail" src="${CONFIG.BASE_IMAGE_URL + restaurant.pictureId}"
     alt="Gambar ${restaurant.name}">
@@ -84,4 +88,5 @@ export {
   createDetailRestaurantTemplate,
   createLikeButtonTemplate,
   createLikedButtonTemplate,
+  createErrorTemplate,
 };

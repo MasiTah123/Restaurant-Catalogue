@@ -30,6 +30,13 @@ const LikeButtonInitiator = {
     const likeButton = document.querySelector('#likeButton');
     likeButton.addEventListener('click', async () => {
       await FavoriteRestaurantIdb.putRestaurant(this._restaurant);
+      import('sweetalert2')
+        .then((module) => module.default)
+        .then((Swal) => Swal.fire({
+          title: 'Success!',
+          text: 'restaurant added to favorite',
+          icon: 'success',
+        }));
       this._renderButton();
     });
   },
@@ -40,6 +47,14 @@ const LikeButtonInitiator = {
     const likeButton = document.querySelector('#likeButton');
     likeButton.addEventListener('click', async () => {
       await FavoriteRestaurantIdb.deleteRestaurant(this._restaurant.id);
+      import('sweetalert2')
+        .then((module) => module.default)
+        .then((Swal) => Swal.fire({
+          title: 'Success!',
+          text: 'restaurant removed from favorite',
+          icon: 'success',
+        }));
+
       this._renderButton();
     });
   },
