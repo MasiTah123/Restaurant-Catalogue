@@ -4,10 +4,6 @@ import '../styles/responsive.css';
 import './component/app-header';
 import './component/app-nav';
 
-import '@fortawesome/fontawesome-free/js/fontawesome';
-import '@fortawesome/fontawesome-free/js/solid';
-import '@fortawesome/fontawesome-free/js/regular';
-
 import App from './view/app';
 import swRegister from './utils/sw-register';
 
