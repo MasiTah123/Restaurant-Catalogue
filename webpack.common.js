@@ -78,7 +78,7 @@ module.exports = {
     new ImageminWebpackPlugin({
       plugins: [
         ImageminMozjpeg({
-          quality: 80,
+          quality: 70,
           progressive: true,
         }),
       ],
@@ -87,9 +87,8 @@ module.exports = {
       config: [
         {
           test: /\.(jpe?g|png)/,
-          include: path.resolve(__dirname, 'src/public/images/heros'),
           options: {
-            quality: 100,
+            quality: 70,
           },
         },
       ],

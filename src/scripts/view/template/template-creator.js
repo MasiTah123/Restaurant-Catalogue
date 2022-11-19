@@ -7,8 +7,13 @@ const createErrorTemplate = (message) => `
 const createRestaurantItemTemplate = (restaurant) => `
 <article class="restaurant-item">
   <div class="restaurant-item-upper">
-    <img class="restaurant-item-thumbnail" src="${CONFIG.BASE_IMAGE_URL + restaurant.pictureId}"
-    alt="Gambar ${restaurant.name}">
+    <picture class="restaurant-item-thumbnail">
+      <source media="(min-width: 2000px)" srcset="${CONFIG.BASE_IMAGE_URL_LARGE + restaurant.pictureId}">
+      <source media="(max-width: 600px)" srcset="${CONFIG.BASE_IMAGE_URL_SMALL + restaurant.pictureId}">
+      <img src="${CONFIG.BASE_IMAGE_URL_MEDIUM + restaurant.pictureId}"
+        alt="Gambar ${restaurant.name}">
+    </picture>
+    
     <p class="restaurant-item-rating"><i class="fa-solid fa-star"></i>${restaurant.rating}
     </p>
   </div>
@@ -23,7 +28,12 @@ const createRestaurantItemTemplate = (restaurant) => `
 const createDetailRestaurantTemplate = (restaurant) => `
   <h2 id="catalog-head" class="detail-head">${restaurant.name}</h2>
   <div class="detail">
-    <img src="${CONFIG.BASE_IMAGE_URL + restaurant.pictureId}" alt="Gambar ${restaurant.name}" class="restaurant-poster">
+    <picture class="restaurant-poster">
+      <source media="(min-width: 2000px)" srcset="${CONFIG.BASE_IMAGE_URL_LARGE + restaurant.pictureId}">
+      <source media="(max-width: 600px)" srcset="${CONFIG.BASE_IMAGE_URL_SMALL + restaurant.pictureId}">
+      <img src="${CONFIG.BASE_IMAGE_URL_MEDIUM + restaurant.pictureId}"
+        alt="Gambar ${restaurant.name}">
+    </picture>
     <div class="detail-content">
       <h3>Information</h3> 
       <div class="restaurant-info">

@@ -59,8 +59,13 @@ app-header {
   margin-top: 20px;
 }
 
-.restaurant-poster {
-  width: 50%;
+.restaurant-poster{
+  width: 100%;
+  height: 50%;
+}
+
+.restaurant-poster img{
+  width: 100%;
   height: 50%;
 }
 
@@ -291,7 +296,12 @@ app-header {
 
 }
 
-.restaurant-item-thumbnail {
+.restaurant-item-thumbnail{
+  width: 100%;
+  height: 300px;
+}
+
+.restaurant-item-thumbnail img{
   width: 100%;
   height: 300px;
 }

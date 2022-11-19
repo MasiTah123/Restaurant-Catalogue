@@ -14,10 +14,15 @@ class AppJumbotron extends HTMLElement {
         align-items: center;
         text-align: center;
         margin-bottom: 30px;
-      } 
+      }
       
-      .jumbotron img{
-        position: absolute;
+      .jumbotron-img {
+        position: relative;
+        width: 100%;
+      }
+      
+      .jumbotron-img source, .jumbotron-img img{
+        position: relative;
         width: 100%;
         height: 550px;
         object-fit: cover;
@@ -47,7 +52,13 @@ class AppJumbotron extends HTMLElement {
       }
     </style>
     <div class="jumbotron">
-      <img src="./images/heros/hero-image_2.jpg" alt="">
+      <picture class="jumbotron-img">
+        <source media="(max-width: 600px)" type="image/webp" srcset="./images/heros/hero-image_2-small.webp">
+        <source media="(max-width: 600px)" type="image/jpeg" srcset="./images/heros/hero-image_2-small.jpg">
+        <source type="image/webp" srcset="./images/heros/hero-image_2-large.webp">
+        <source type="image/jpeg" srcset="./images/heros/hero-image_2-large.jpg">
+        <img src="./images/heros/hero-image_2.jpg" alt="">
+      </picture>
       <div class="jumbotron-inner">
         <h2 class="jumbotron-head">Welcome to <span class="restaurant-name">ReFind</span> (Restaurant Finder)</h2>
         <p class="jumbotron-tagline">"Lorem ipsum dolor, sit amet consectetur adipisicing elit. Rerum, delectus quae
