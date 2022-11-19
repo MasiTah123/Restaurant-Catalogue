@@ -52,7 +52,7 @@ class AppJumbotron extends HTMLElement {
       }
     </style>
     <div class="jumbotron">
-      <picture class="jumbotron-img">
+      <picture class="jumbotron-img lazyload">
         <source media="(max-width: 600px)" type="image/webp" srcset="./images/heros/hero-image_2-small.webp">
         <source media="(max-width: 600px)" type="image/jpeg" srcset="./images/heros/hero-image_2-small.jpg">
         <source type="image/webp" srcset="./images/heros/hero-image_2-large.webp">
