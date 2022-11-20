@@ -1,7 +1,8 @@
+/* eslint-disable max-len */
 import RestaurantDataSource from '../../../data/restaurant-resourceDB';
-import { createRestaurantItemTemplate, createErrorTemplate } from '../template/template-creator';
+import { createErrorTemplate, createRestaurantItemSkeletonTemplate } from '../template/template-creator';
 import '../../component/app-jumbotron';
-
+import CONFIG from '../../globals/config';
 import drawerWithJumbotron from '../../utils/drawer-with-jumbotron';
 
 const RestaurantList = {
@@ -10,36 +11,55 @@ const RestaurantList = {
     <app-jumbotron></app-jumbotron>
     <section class="restaurant-catalog" id="restaurant-catalog">
       <h2 id="catalog-head" class="catalog-head">Restaurant List</h2>
-      <div class="preloader-item">
-        <div class="lds-ring">
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-        </div>
-      </div>
       <div class="catalog">
-
+      
       </div>
     </section>
     `;
   },
 
-  async afterRender() {
+  async addSkeleton() {
     drawerWithJumbotron.init({
       jumbotron: document.querySelector('app-jumbotron'),
       drawer: document.querySelector('#drawer'),
     });
+    const template = document.createElement('template');
+    template.id = 'restaurant-template';
+    template.innerHTML = createRestaurantItemSkeletonTemplate();
     const catalog = document.querySelector('.catalog');
+    catalog.append(template);
+    try {
+      const restaurant = await RestaurantDataSource.restaurantKatalog();
+      for (let i = 0; i < restaurant.length; i += 1) {
+        catalog.append(template.content.cloneNode(true));
+      }
+    } catch (err) {
+      catalog.innerHTML = createErrorTemplate(err);
+    }
+  },
+
+  async afterRender() {
+    const catalog = document.querySelector('.catalog');
+    const restaurantTemplate = document.getElementById('restaurant-template');
     try {
       const restaurants = await RestaurantDataSource.restaurantKatalog();
-      document.querySelector('.preloader-item').style.display = 'none';
+      catalog.innerHTML = '';
       restaurants.forEach((restaurant) => {
-        catalog.innerHTML += createRestaurantItemTemplate(restaurant);
+        const div = restaurantTemplate.content.cloneNode(true);
+
+        div.querySelector('.source-large').srcset = `${CONFIG.BASE_IMAGE_URL_LARGE + restaurant.pictureId}`;
+        div.querySelector('.source-small').srcset = `${CONFIG.BASE_IMAGE_URL_SMALL + restaurant.pictureId}`;
+        div.querySelector('.img-thumb').src = `${CONFIG.BASE_IMAGE_URL_MEDIUM + restaurant.pictureId}`;
+        div.querySelector('.img-thumb').alt = `Gambar ${restaurant.name}`;
+        div.querySelector('.restaurant-item-rating').innerHTML = `<i class="fa-solid fa-star"></i>${restaurant.rating}`;
+        div.querySelector('.restaurant-item-title').innerHTML = `<a href="#/detail/${restaurant.id}">${restaurant.name}</a>`;
+        div.querySelector('.restaurant-item-city').innerHTML = `City: <span class="city-restaurant">${restaurant.city}</span> `;
+        div.querySelector('.restaurant-item-description').textContent = restaurant.description;
+
+        catalog.append(div);
       });
     } catch (err) {
-      document.querySelector('.preloader-item').style.display = 'none';
-      catalog.innerHTML += createErrorTemplate(err);
+      catalog.innerHTML = createErrorTemplate(err);
     }
   },
 };

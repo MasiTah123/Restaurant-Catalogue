@@ -33,7 +33,7 @@ app-header {
 
 
 .restaurant-catalog, .restaurant-detail{
-  width: 85%;
+  width: 60%;
   position: relative;
   margin-left: auto;
   margin-right: auto;
@@ -61,12 +61,12 @@ app-header {
 
 .restaurant-poster{
   width: 100%;
-  height: 50%;
+  height: 300px;
 }
 
 .restaurant-poster img{
   width: 100%;
-  height: 50%;
+  height: 300px;
 }
 
 /*
@@ -86,6 +86,7 @@ app-header {
   padding: 10px 15px;
   margin-left: 10px ;
   background: white;
+  width: 78%;
 }
 
 .detail-content h3, .restaurant-menu-section h3, .restaurant-review-section h3 {
@@ -244,13 +245,6 @@ app-header {
   background: rgb(129, 52, 201);
 }
 
-
-
-
-
-
-
-
 /*
   Restaurant Item
 */
@@ -267,12 +261,12 @@ app-header {
   position: relative;
   border: 1px solid white;
   border-radius: 12px;
-  background: #fbd6e4;
-  
+  background: #fbd6e4;  
 }
 
 .restaurant-item-upper{
   position: relative;
+  height: 225px;
 }
 
 .restaurant-item-content {
@@ -298,17 +292,18 @@ app-header {
 
 .restaurant-item-thumbnail{
   width: 100%;
-  height: 300px;
+  height: 225px;
 }
 
 .restaurant-item-thumbnail img{
   width: 100%;
-  height: 300px;
+  height: 225px;
 }
 
 .restaurant-item-title {
   font-size: 20px;
-  padding: 10px 12px 0px 0px;
+  padding: 0px 12px 0px 0px;
+  margin-bottom: 5px;
 }
 
 .restaurant-item-title a{
@@ -322,16 +317,6 @@ app-header {
   margin-bottom: 10px;
 }
 
-.id-restaurant {
-  color: rgb(94, 106, 115);
-  margin-right: 10px;
-}
-
-.id-restaurant:hover {
-  text-decoration: underline;
-  cursor: pointer;
-}
-
 .city-restaurant {
   font-weight: 700;
   color: rgb(235, 20, 20);
@@ -341,7 +326,7 @@ app-header {
   line-height: 20px;
   text-align: justify;
   overflow: hidden;
-  max-height: 200px;
+  height: 100px;
 }
 
 /*
@@ -389,51 +374,68 @@ footer{
   color: white;
 }
 
+
 /*
   Loader
 */
 
-.lds-ring {
-  display: inline-block;
-  position: relative;
-  width: 48px;
-  height: 48px;
-  margin: 8px auto;
+
+.loading {
+  -webkit-animation: skeleton-loading 1s linear infinite alternate;
+          animation: skeleton-loading 1s linear infinite alternate;
 }
-.lds-ring div {
-  box-sizing: border-box;
-  display: block;
-  position: absolute;
-  width: 32px;
-  height: 32px;
-  margin: 8px;
-  border: 5px solid #fcf;
-  border-radius: 50%;
-  animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
-  border-color: rgb(25, 1, 116) transparent transparent transparent;
-}
-.lds-ring div:nth-child(1) {
-  animation-delay: -0.45s;
-}
-.lds-ring div:nth-child(2) {
-  animation-delay: -0.3s;
-}
-.lds-ring div:nth-child(3) {
-  animation-delay: -0.15s;
-}
-@keyframes lds-ring {
+
+@-webkit-keyframes skeleton-loading {
   0% {
-    transform: rotate(0deg);
+    background-color: #b46cac;
   }
   100% {
-    transform: rotate(360deg);
+    background-color: #eba9e3;
   }
 }
 
-.preloader-item {
-  display: flex;
+@keyframes skeleton-loading {
+  0% {
+    background-color: #b46cac;
+  }
+  100% {
+    background-color: #eba9e3;
+  }
 }
 
+.loading-title {
+  width: 75%;
+  height: 44px;
+}
 
+.loading-city {
+  width: 50%;
+  height: 20px;
+}
 
+.loading-description {
+  width: 100%;
+  height: 100px;
+}
 
+.loading-title-detail {
+  width: 30%;
+  height: 44px;
+  margin: 0 auto;
+}
+
+.loading-title-h4 {
+  margin-top: 10px ;
+  width: 150px;
+  height: 25px;
+}
+
+.loading-description-detail {
+  width: 100%;
+  height: 200px;
+}
+
+.loading-title-h3 {
+  width: 40%;
+  height: 30px;
+}

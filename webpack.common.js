@@ -7,7 +7,7 @@ const ImageminMozjpeg = require('imagemin-mozjpeg');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const ImageminWebpWebpackPlugin = require('imagemin-webp-webpack-plugin');
 // eslint-disable-next-line prefer-destructuring
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+// const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 module.exports = {
   entry: {
@@ -94,7 +94,7 @@ module.exports = {
       ],
       overrideExtension: true,
     }),
-    new BundleAnalyzerPlugin(),
+    // new BundleAnalyzerPlugin(),
     new CleanWebpackPlugin(),
   ],
 };
