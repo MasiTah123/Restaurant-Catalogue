@@ -1,35 +1,37 @@
 /* eslint-disable max-len */
-// import CONFIG from '../../globals/config';
+import CONFIG from '../../globals/config';
 
 const createErrorTemplate = (message) => `
   <h3>${message}</h3>
 `;
 
 const createRestaurantItemSkeletonTemplate = () => `
-  <article class="restaurant-item">
-    <div class="restaurant-item-upper">
-      <picture class="restaurant-item-thumbnail lazyload">
-        <source class="source-large" media="(min-width: 2000px)" >
-        <source class="source-small" media="(max-width: 600px)" >
-        <img class="img-thumb lazyload loading">
-      </picture>
+  <template id="restaurant-template">  
+    <article class="restaurant-item">
+      <div class="restaurant-item-upper">
+        <picture class="restaurant-item-thumbnail lazyload">
+          <source class="source-large" media="(min-width: 2000px)">
+          <source class="source-small" media="(max-width: 1200px)">
+          <img class="img-thumb lazyload loading">
+        </picture>
 
-      <p class="restaurant-item-rating">
-        <div></div>
-      </p>
-    </div>
-    <div class="restaurant-item-content">
-      <h3 class="restaurant-item-title">
-        <div class="loading loading-title"></div>
-      </h3>
-      <div class="restaurant-item-city">
-        <div class="loading loading-city"></div>
+        <p class="restaurant-item-rating">
+          <div></div>
+        </p>
       </div>
-      <div class="restaurant-item-description">
-        <div class="loading loading-description"></div>
+      <div class="restaurant-item-content">
+        <h3 class="restaurant-item-title">
+          <div class="loading loading-title"></div>
+        </h3>
+        <div class="restaurant-item-city">
+          <div class="loading loading-city"></div>
+        </div>
+        <div class="restaurant-item-description">
+          <div class="loading loading-description"></div>
+        </div>
       </div>
-    </div>
-  </article>
+    </article>
+  </template>
 `;
 
 const createDetailRestaurantSkeletonTemplate = () => `
@@ -113,7 +115,7 @@ const createDetailRestaurantSkeletonTemplate = () => `
 
 
 `;
-/*
+
 const createDetailRestaurantTemplate = (restaurant) => `
   <h2 id="catalog-head" class="detail-head">${restaurant.name}</h2>
   <div class="detail">
@@ -169,7 +171,7 @@ const createDetailRestaurantTemplate = (restaurant) => `
     </div>
   </div>
 `;
-*/
+
 const createLikeButtonTemplate = () => `
   <button aria-label="like this movie" id="likeButton" class="like">
      <i class="fa-regular fa-heart" aria-hidden="true"></i>
@@ -185,7 +187,7 @@ const createLikedButtonTemplate = () => `
 export {
   createRestaurantItemSkeletonTemplate,
   createDetailRestaurantSkeletonTemplate,
-  // createDetailRestaurantTemplate,
+  createDetailRestaurantTemplate,
   createLikeButtonTemplate,
   createLikedButtonTemplate,
   createErrorTemplate,

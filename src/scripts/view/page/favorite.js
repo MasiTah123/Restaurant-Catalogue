@@ -3,31 +3,19 @@ import { createErrorTemplate, createRestaurantItemSkeletonTemplate } from '../te
 import CONFIG from '../../globals/config';
 
 const Favorite = {
-  async render() {
-    return `
+  async render(element) {
+    // eslint-disable-next-line no-param-reassign
+    element.innerHTML = `
     <section class="restaurant-catalog favorite" id="restaurant-catalog">
       <h2 id="catalog-head" class="catalog-head">Favorite Restaurant</h2>
-      <div class="preloader-item">
-        <div class="lds-ring">
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-        </div>
-      </div>
       <div class="catalog">
-        
+        <link rel="preconnect" href="https://restaurant-api.dicoding.dev/">
       </div>
     </section>
   `;
-  },
-
-  async addSkeleton() {
-    const template = document.createElement('template');
-    template.id = 'restaurant-template';
-    template.innerHTML = createRestaurantItemSkeletonTemplate();
     const catalog = document.querySelector('.catalog');
-    catalog.append(template);
+    catalog.innerHTML = createRestaurantItemSkeletonTemplate();
+    const template = document.getElementById('restaurant-template');
     try {
       const restaurant = await FavoriteRestaurantIdb.getAllRestaurants();
       for (let i = 0; i < restaurant.length; i += 1) {
@@ -52,7 +40,8 @@ const Favorite = {
         div.querySelector('.source-small').srcset = `${CONFIG.BASE_IMAGE_URL_SMALL + FavoriteRestaurant.pictureId}`;
         div.querySelector('.img-thumb').src = `${CONFIG.BASE_IMAGE_URL_MEDIUM + FavoriteRestaurant.pictureId}`;
         div.querySelector('.img-thumb').alt = `Gambar ${FavoriteRestaurant.name}`;
-        div.querySelector('.FavoriteRestaurant-item-rating').innerHTML = `<i class="fa-solid fa-star"></i>${FavoriteRestaurant.rating}`;
+        div.querySelector('.img-thumb').classList.remove('loading');
+        div.querySelector('.restaurant-item-rating').innerHTML = `<i class="fa-solid fa-star"></i>${FavoriteRestaurant.rating}`;
         div.querySelector('.restaurant-item-title').innerHTML = `<a href="#/detail/${FavoriteRestaurant.id}">${FavoriteRestaurant.name}</a>`;
         div.querySelector('.restaurant-item-city').innerHTML = `City: <span class="city-restaurant">${FavoriteRestaurant.city}</span> `;
         div.querySelector('.restaurant-item-description').textContent = FavoriteRestaurant.description;

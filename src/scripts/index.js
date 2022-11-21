@@ -5,6 +5,7 @@ import '../styles/main.css';
 import '../styles/responsive.css';
 import './component/app-header';
 import './component/app-nav';
+import './component/app-footer';
 
 import App from './view/app';
 import swRegister from './utils/sw-register';

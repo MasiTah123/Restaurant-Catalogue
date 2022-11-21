@@ -83,7 +83,7 @@
   .detail-content {
     margin-top: 10px;
   }
-  
+
 }
 
 
@@ -102,6 +102,7 @@
   .jumbotron-tagline {
     font-size: 10px;
   }
+
 
   .header-name{
     font-size: 20px;
@@ -144,6 +145,10 @@
   .btn-submit {
     width: 50%;
   }
+
+  app-footer .copyright-content{
+    font-size: 14px;
+  }
 }
 
 @media screen and (max-width: 390px) {
@@ -162,6 +167,14 @@
 }
 
 @media screen and (max-width: 300px) {
+  .jumbotron-head {
+    font-size: 13px;
+  }
+
+  .jumbotron-tagline {
+    font-size: 8px;
+  }
+
   app-header .header-name{
     font-size: 16px;
   }
@@ -173,7 +186,7 @@
     padding: 10px;
   }
 
-  .copyright-content{
+  app-footer .copyright-content{
     font-size: 12px;
   }
 
@@ -193,10 +206,7 @@
 }
 
 @media screen and (max-width: 350px) {
-  .copyright-content{
-    font-size: 14px;
-  }
-
+  
   .detail-head {
     font-size: 18px;
   }

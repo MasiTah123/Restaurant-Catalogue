@@ -6,8 +6,9 @@ import CONFIG from '../../globals/config';
 import drawerWithJumbotron from '../../utils/drawer-with-jumbotron';
 
 const RestaurantList = {
-  async render() {
-    return `
+  async render(element) {
+    // eslint-disable-next-line no-param-reassign
+    element.innerHTML = `
     <app-jumbotron></app-jumbotron>
     <section class="restaurant-catalog" id="restaurant-catalog">
       <h2 id="catalog-head" class="catalog-head">Restaurant List</h2>
@@ -16,21 +17,16 @@ const RestaurantList = {
       </div>
     </section>
     `;
-  },
-
-  async addSkeleton() {
     drawerWithJumbotron.init({
       jumbotron: document.querySelector('app-jumbotron'),
       drawer: document.querySelector('#drawer'),
     });
-    const template = document.createElement('template');
-    template.id = 'restaurant-template';
-    template.innerHTML = createRestaurantItemSkeletonTemplate();
     const catalog = document.querySelector('.catalog');
-    catalog.append(template);
+    catalog.innerHTML = createRestaurantItemSkeletonTemplate();
+    const template = document.getElementById('restaurant-template');
     try {
       const restaurant = await RestaurantDataSource.restaurantKatalog();
-      for (let i = 0; i < restaurant.length; i += 1) {
+      for (let i = 0; i < restaurant.lenght; i += 1) {
         catalog.append(template.content.cloneNode(true));
       }
     } catch (err) {
@@ -51,10 +47,11 @@ const RestaurantList = {
         div.querySelector('.source-small').srcset = `${CONFIG.BASE_IMAGE_URL_SMALL + restaurant.pictureId}`;
         div.querySelector('.img-thumb').src = `${CONFIG.BASE_IMAGE_URL_MEDIUM + restaurant.pictureId}`;
         div.querySelector('.img-thumb').alt = `Gambar ${restaurant.name}`;
+        div.querySelector('.img-thumb').classList.remove('loading');
         div.querySelector('.restaurant-item-rating').innerHTML = `<i class="fa-solid fa-star"></i>${restaurant.rating}`;
         div.querySelector('.restaurant-item-title').innerHTML = `<a href="#/detail/${restaurant.id}">${restaurant.name}</a>`;
         div.querySelector('.restaurant-item-city').innerHTML = `City: <span class="city-restaurant">${restaurant.city}</span> `;
-        div.querySelector('.restaurant-item-description').textContent = restaurant.description;
+        div.querySelector('.restaurant-item-description').innerHTML = restaurant.description;
 
         catalog.append(div);
       });

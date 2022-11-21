@@ -19,13 +19,16 @@ class AppJumbotron extends HTMLElement {
       .jumbotron-img {
         position: relative;
         width: 100%;
+        height: 550px;
+        object-fit: cover;
+        background: #b46cac; 
       }
       
       .jumbotron-img source, .jumbotron-img img{
         position: relative;
-        width: 100%;
-        height: 550px;
         object-fit: cover;
+        width: 100%;
+        height: 100%;
         filter: brightness(0.5);
       }
       
@@ -52,9 +55,9 @@ class AppJumbotron extends HTMLElement {
       }
     </style>
     <div class="jumbotron">
-      <picture class="jumbotron-img lazyload">
-        <source media="(max-width: 600px)" type="image/webp" srcset="./images/heros/hero-image_2-small.webp">
-        <source media="(max-width: 600px)" type="image/jpeg" srcset="./images/heros/hero-image_2-small.jpg">
+      <picture class="jumbotron-img">
+        <source media="(max-width: 1200px)" type="image/webp" srcset="./images/heros/hero-image_2-small.webp">
+        <source media="(max-width: 1200px)" type="image/jpeg" srcset="./images/heros/hero-image_2-small.jpg">
         <source type="image/webp" srcset="./images/heros/hero-image_2-large.webp">
         <source type="image/jpeg" srcset="./images/heros/hero-image_2-large.jpg">
         <img src="./images/heros/hero-image_2-large.jpg" alt="">
