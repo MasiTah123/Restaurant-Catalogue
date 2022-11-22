@@ -9,23 +9,27 @@ class App {
     this._content = content;
 
     this._initialAppshell();
+    this._createSkeleton();
   }
 
-  async _initialAppshell() {
+  _initialAppshell() {
     DrawerInitiator.init({
       button: this._button,
       drawer: this._drawer,
       content: this._content,
     });
+  }
+
+  async _createSkeleton() {
     const url = UrlParser.parseActiveUrlWithCombiner();
     const page = routes[url];
     await page.render(this._content);
   }
 
+  // eslint-disable-next-line class-methods-use-this
   async renderPage() {
     const url = UrlParser.parseActiveUrlWithCombiner();
     const page = routes[url];
-    await page.render(this._content);
     await page.afterRender();
 
     const skipLinkElem = document.querySelector('.skip-to-content');

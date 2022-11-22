@@ -1,7 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const WorkboxWebpackPlugin = require('workbox-webpack-plugin');
 const ImageminWebpackPlugin = require('imagemin-webpack-plugin').default;
 const ImageminMozjpeg = require('imagemin-mozjpeg');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
@@ -11,6 +10,8 @@ module.exports = {
   entry: {
     app: path.resolve(__dirname, 'src/scripts/index.js'),
     icon: path.resolve(__dirname, 'src/scripts/icon.js'),
+    style: path.resolve(__dirname, 'src/styles/main.css'),
+    responsive: path.resolve(__dirname, 'src/styles/responsive.css'),
     /* sw: path.resolve(__dirname, 'src/scripts/sw.js'), */
   },
   output: {
@@ -45,10 +46,6 @@ module.exports = {
           to: path.resolve(__dirname, 'dist/'),
         },
       ],
-    }),
-    new WorkboxWebpackPlugin.GenerateSW({
-      swDest: './sw.bundle.js',
-      maximumFileSizeToCacheInBytes: 10485760,
     }),
     new ImageminWebpackPlugin({
       plugins: [

@@ -7,12 +7,6 @@ import { faUser } from '@fortawesome/free-solid-svg-icons/faUser';
 import { faStar } from '@fortawesome/free-solid-svg-icons/faStar';
 import { faHeart as faHeartRegular } from '@fortawesome/free-regular-svg-icons/faHeart';
 
-library.add(faBars);
-library.add(faUtensils);
-library.add(faHouse);
-library.add(faHeart);
-library.add(faUser);
-library.add(faStar);
-library.add(faHeartRegular);
+library.add(faBars, faUtensils, faHouse, faHeart, faUser, faStar, faHeartRegular);
 
 dom.watch();

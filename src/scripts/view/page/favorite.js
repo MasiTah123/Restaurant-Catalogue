@@ -8,8 +8,9 @@ const Favorite = {
     element.innerHTML = `
     <section class="restaurant-catalog favorite" id="restaurant-catalog">
       <h2 id="catalog-head" class="catalog-head">Favorite Restaurant</h2>
+      <link rel="preconnect" href="https://restaurant-api.dicoding.dev/">
       <div class="catalog">
-        <link rel="preconnect" href="https://restaurant-api.dicoding.dev/">
+        
       </div>
     </section>
   `;
@@ -36,8 +37,8 @@ const Favorite = {
       favorites.forEach((FavoriteRestaurant) => {
         const div = restaurantTemplate.content.cloneNode(true);
 
-        div.querySelector('.source-large').srcset = `${CONFIG.BASE_IMAGE_URL_LARGE + FavoriteRestaurant.pictureId}`;
-        div.querySelector('.source-small').srcset = `${CONFIG.BASE_IMAGE_URL_SMALL + FavoriteRestaurant.pictureId}`;
+        div.querySelector('#source-large').srcset = `${CONFIG.BASE_IMAGE_URL_LARGE + FavoriteRestaurant.pictureId}`;
+        div.querySelector('#source-small').srcset = `${CONFIG.BASE_IMAGE_URL_SMALL + FavoriteRestaurant.pictureId}`;
         div.querySelector('.img-thumb').src = `${CONFIG.BASE_IMAGE_URL_MEDIUM + FavoriteRestaurant.pictureId}`;
         div.querySelector('.img-thumb').alt = `Gambar ${FavoriteRestaurant.name}`;
         div.querySelector('.img-thumb').classList.remove('loading');

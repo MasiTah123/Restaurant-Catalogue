@@ -1,8 +1,7 @@
+import '@babel/polyfill';
 import 'lazysizes';
 import 'lazysizes/plugins/parent-fit/ls.parent-fit';
 import 'regenerator-runtime'; /* for async await transpile */
-import '../styles/main.css';
-import '../styles/responsive.css';
 import './component/app-header';
 import './component/app-nav';
 import './component/app-footer';
@@ -16,11 +15,13 @@ const app = new App({
   content: document.querySelector('#mainContent'),
 });
 
-window.addEventListener('hashchange', () => {
+window.addEventListener('hashchange', async () => {
+  await app._createSkeleton();
   app.renderPage();
 });
 
 window.addEventListener('load', async () => {
+  await app._createSkeleton();
   app.renderPage();
   swRegister();
 });

@@ -26,7 +26,7 @@ const RestaurantList = {
     const template = document.getElementById('restaurant-template');
     try {
       const restaurant = await RestaurantDataSource.restaurantKatalog();
-      for (let i = 0; i < restaurant.lenght; i += 1) {
+      for (let i = 0; i < restaurant.length; i += 1) {
         catalog.append(template.content.cloneNode(true));
       }
     } catch (err) {
@@ -43,8 +43,8 @@ const RestaurantList = {
       restaurants.forEach((restaurant) => {
         const div = restaurantTemplate.content.cloneNode(true);
 
-        div.querySelector('.source-large').srcset = `${CONFIG.BASE_IMAGE_URL_LARGE + restaurant.pictureId}`;
-        div.querySelector('.source-small').srcset = `${CONFIG.BASE_IMAGE_URL_SMALL + restaurant.pictureId}`;
+        div.querySelector('#source-large').srcset = `${CONFIG.BASE_IMAGE_URL_LARGE + restaurant.pictureId}`;
+        div.querySelector('#source-small').srcset = `${CONFIG.BASE_IMAGE_URL_SMALL + restaurant.pictureId}`;
         div.querySelector('.img-thumb').src = `${CONFIG.BASE_IMAGE_URL_MEDIUM + restaurant.pictureId}`;
         div.querySelector('.img-thumb').alt = `Gambar ${restaurant.name}`;
         div.querySelector('.img-thumb').classList.remove('loading');

@@ -53,16 +53,16 @@
     text-align: left;
   }
 
+  .restaurant-detail{
+    width: 80%;
+  }
+
   
 }
 
 @media screen and (max-width: 1000px) { 
   .restaurant-catalog{
     width: 95%;
-  }
-
-  .restaurant-menu {
-    width: 80%;
   }
 
   .detail {
@@ -123,7 +123,7 @@
   
   .restaurant-menu {
     display: block;
-    width: 100%;
+    width: 95%;
   }
 
   .restaurant-food {
@@ -131,7 +131,7 @@
   }
 
   .customer-review {
-    width: 100%;
+    width: 95%;
   }
 
   .detail-content p, .restaurant-menu li{
@@ -139,16 +139,22 @@
   }
 
   .add-review {
-    width: 100%;
+    width: 95%;
   }
 
   .btn-submit {
-    width: 50%;
+    width: 75%;
+    margin: auto auto 0px auto;
   }
 
   app-footer .copyright-content{
     font-size: 14px;
   }
+
+  .detail-head {
+    font-size: 20px;
+  }
+
 }
 
 @media screen and (max-width: 390px) {
@@ -202,7 +208,9 @@
     font-size: 14px;
   }
 
-  
+  .btn-submit {
+    margin: auto auto 0px auto;
+  }
 }
 
 @media screen and (max-width: 350px) {
@@ -220,16 +228,21 @@
   }
 }
 
+@media screen and (max-width: 1100px) {
+  .restaurant-menu {
+    display: block;
+  }
+
+  .food-list, .drink-list {
+    width: 100%;
+  }
+}
+
 @media screen and (min-width: 1280px) {
   .catalog {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
   }
-
-  .restaurant-catalog{
-    width: 90%;
-  }
-
   
 }
 

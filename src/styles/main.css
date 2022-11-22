@@ -33,7 +33,7 @@ app-header {
 
 
 .restaurant-catalog, .restaurant-detail{
-  width: 60%;
+  width: 75%;
   position: relative;
   margin-left: auto;
   margin-right: auto;
@@ -53,6 +53,7 @@ app-header {
   letter-spacing: 4px;
   color: #4e3c72;
   text-decoration: underline;
+  min-height: 35px;
 }
 
 .restaurant-detail {
@@ -86,26 +87,32 @@ app-header {
   padding: 10px 15px;
   margin-left: 10px ;
   background: white;
-  width: 78%;
+  width: 80%;
 }
 
 .detail-content h3, .restaurant-menu-section h3, .restaurant-review-section h3 {
   font-size: 30px;
   margin-bottom: 25px;
   color: #523196;
+  min-height: 40px;
 }
 
 .restaurant-info h4, .restaurant-menu-section h4 {
   font-size: 22px;
-  margin-bottom: 10px; 
   color: #7956c0;
+  min-height: 40px;
 }
 
-.restaurant-info p {
+.text-detail {
   font-size: 18px;
   margin-bottom: 12px;
   text-align: justify;
   line-height: 24px;
+  min-height: 25px;
+}
+
+#deskripsi-content {
+  height: 375px;
 }
 
 .restaurant-menu-section, .restaurant-review-section, .add-review {
@@ -115,19 +122,21 @@ app-header {
   align-items: center;
   background: white;
   margin: 15px auto;
-  padding: 15px;
+  padding: 20px;
 }
+
 
 .restaurant-menu {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  width: 60%;
+  width: 80%;
 }
 
 .restaurant-menu li{
   list-style: none;
   font-size: 20px;
+  min-height: 27px;
   margin-bottom: 12px;
 }
 
@@ -147,7 +156,7 @@ app-header {
   border-radius: 10px;
 }
 
-.review h4, .label-input {
+.label, .label-input {
   font-size: 22px;
   color: #7956c0;
   width: 100%;
@@ -173,11 +182,13 @@ app-header {
   Add Review
 */
 #add-form {
-  display: visible;
+  width: 100%;
+  height: 350px;
+  opacity: 1;
 }
 
 #add-form.close{
-  display: none;
+  opacity: 0;
 }
 
 .add-review {
@@ -230,12 +241,13 @@ app-header {
   padding: 15px;
   border-radius: 7px;
   border: none;
-  width: 30%;
+  width: 45%;
   background: rgb(83, 6, 155);
 
   font-size: 16px;
   font-weight: 700;
   color: white;
+  margin-top: auto;
   letter-spacing: 2px;
   margin-bottom: 10px;
   margin-left: auto;
@@ -313,6 +325,7 @@ app-header {
 }
 
 .restaurant-item-city {
+  height: 19px;
   font-size: 80%;
   margin-bottom: 10px;
 }
@@ -358,10 +371,6 @@ app-header {
 }
 
 /*
-  footer
-*/
-
-/*
   Loader
 */
 
@@ -395,9 +404,16 @@ app-header {
   height: 44px;
 }
 
+.loading-location {
+  margin-bottom: 12px;
+  line-height: 24px;
+  width: 100%;
+  height: 25px;
+}
+
 .loading-city {
-  width: 50%;
-  height: 20px;
+  height: 19px;
+  width: 150px;
 }
 
 .loading-description {
@@ -405,24 +421,85 @@ app-header {
   height: 100px;
 }
 
+.loading-title-h4 {
+  margin-bottom: 10px ;
+  width: 50%;
+  height: 40px;
+}
+
 .loading-title-detail {
   width: 30%;
-  height: 44px;
+  height: 36px;
   margin: 0 auto;
 }
 
-.loading-title-h4 {
-  margin-top: 10px ;
-  width: 150px;
-  height: 25px;
+.loading-title-info {
+  width: 100%;
+  height: 40px;
 }
 
 .loading-description-detail {
   width: 100%;
-  height: 200px;
+  height: 435px;
 }
 
 .loading-title-h3 {
   width: 40%;
   height: 30px;
+}
+
+.loading-title-menu, .loading-title-review {
+  width: 245px;
+  height: 40px;
+}
+
+.loading-title-food, .loading-title-drink {
+  width: 150px;
+  height: 35px;
+}
+
+.loading-list {
+  width: 150px;
+  height: 27px;
+  margin-bottom: 12px;
+}
+
+.loading-username {
+  width: 100px;
+  height: 30px;
+  margin-bottom: 5px;
+}
+
+.loading-date {
+  width: 175px;
+  height: 20px;
+  margin-bottom: 10px;
+}
+
+.loading-review {
+  width: 100%;
+  height: 25px;
+}
+
+/*
+  Custom Scroll Bar
+*/
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+
+::-webkit-scrollbar-track {
+  background: rgb(225, 196, 255);
+}
+
+
+::-webkit-scrollbar-thumb {
+  background: #2c0029;
+}
+
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(150, 118, 186);
 }

@@ -1,8 +1,10 @@
+const WorkboxWebpackPlugin = require('workbox-webpack-plugin');
 // eslint-disable-next-line prefer-destructuring
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
+const FixStyleOnlyEntriesPlugin = require('webpack-fix-style-only-entries');
 
 const { merge } = require('webpack-merge');
 const common = require('./webpack.common');
@@ -37,9 +39,20 @@ module.exports = merge(common, {
         },
       },
     },
+    minimize: true,
     minimizer: [
       new CssMinimizerPlugin(),
-      new TerserPlugin(),
+      new TerserPlugin({
+        test: /\.js(\?.*)?$/i,
+        parallel: 4,
+        extractComments: false,
+        minify: TerserPlugin.swcMinify,
+        terserOptions: {
+          compress: {
+            defaults: true,
+          },
+        },
+      }),
     ],
   },
   module: {
@@ -58,12 +71,21 @@ module.exports = merge(common, {
       },
       {
         test: /.s?css$/,
-        use: [MiniCssExtractPlugin.loader, 'css-loader'],
+        use: [
+          MiniCssExtractPlugin.loader,
+          { loader: 'css-loader', options: { sourceMap: true } },
+        ],
       },
     ],
   },
   plugins: [
+    new WorkboxWebpackPlugin.GenerateSW({
+      swDest: './sw.bundle.js',
+    }),
     new BundleAnalyzerPlugin(),
-    new MiniCssExtractPlugin(),
+    new MiniCssExtractPlugin({
+      filename: '[name].css',
+    }),
+    new FixStyleOnlyEntriesPlugin(),
   ],
 });
