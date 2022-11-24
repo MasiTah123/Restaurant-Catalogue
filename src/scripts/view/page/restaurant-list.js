@@ -26,6 +26,7 @@ const RestaurantList = {
         catalog.append(template.content.cloneNode(true));
       }
     } catch (err) {
+      catalog.style.display = 'flex';
       catalog.innerHTML = createErrorTemplate(err);
     }
   },
@@ -57,6 +58,7 @@ const RestaurantList = {
         catalog.append(div);
       });
     } catch (err) {
+      catalog.style.display = 'flex';
       catalog.innerHTML = createErrorTemplate(err);
     }
   },

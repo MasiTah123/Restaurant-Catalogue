@@ -1,6 +1,6 @@
 /* eslint-disable max-len */
 const createErrorTemplate = (message) => `
-  <h3>${message}</h3>
+  <h3 id="error-text">${message}</h3>
 `;
 
 const createRestaurantItemSkeletonTemplate = () => `

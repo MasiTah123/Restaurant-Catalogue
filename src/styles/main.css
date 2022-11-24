@@ -31,6 +31,10 @@ app-header {
   main content
 */
 
+#error-text {
+  margin: 0 auto;
+  color: red;
+}
 
 .restaurant-catalog, .restaurant-detail{
   width: 75%;
@@ -112,7 +116,7 @@ app-header {
 }
 
 #deskripsi-content {
-  height: 375px;
+  min-height: 375px;
 }
 
 .restaurant-menu-section, .restaurant-review-section, .add-review {
@@ -440,7 +444,7 @@ app-header {
 
 .loading-description-detail {
   width: 100%;
-  height: 435px;
+  height: 375px;
 }
 
 .loading-title-h3 {

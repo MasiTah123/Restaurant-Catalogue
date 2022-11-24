@@ -23,6 +23,7 @@ const Favorite = {
         catalog.append(template.content.cloneNode(true));
       }
     } catch (err) {
+      catalog.style.display = 'flex';
       catalog.innerHTML = createErrorTemplate(err);
     }
   },
@@ -33,6 +34,12 @@ const Favorite = {
 
     try {
       const favorites = await FavoriteRestaurantIdb.getAllRestaurants();
+      console.log(favorites);
+      if (favorites.length === 0) {
+        catalog.style.display = 'flex';
+        catalog.innerHTML = createErrorTemplate('No Favorites Restaurant Found');
+        return;
+      }
       catalog.innerHTML = '';
       favorites.forEach((FavoriteRestaurant) => {
         const div = restaurantTemplate.content.cloneNode(true);
@@ -50,6 +57,7 @@ const Favorite = {
         catalog.append(div);
       });
     } catch (err) {
+      catalog.style.display = 'flex';
       catalog.innerHTML = createErrorTemplate(err);
     }
   },

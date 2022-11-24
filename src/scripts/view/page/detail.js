@@ -10,6 +10,7 @@ import {
 import LikeButtonPresenter from '../../utils/like-button-presenter';
 import AddReview from '../../utils/add-review';
 import CONFIG from '../../globals/config';
+import FavoriteRestaurantIdb from '../../../data/favorite-restaurant-idb';
 
 const Detail = {
   async render(element) {
@@ -55,6 +56,7 @@ const Detail = {
         drinkList.append(templateDrinkList.content.cloneNode(true));
       }
     } catch (err) {
+      restaurantDetail.style.display = 'flex';
       restaurantDetail.innerHTML = createErrorTemplate(err);
     }
   },
@@ -82,6 +84,7 @@ const Detail = {
           city: restaurant.city,
           address: restaurant.address,
         },
+        favoriteRestaurants: FavoriteRestaurantIdb,
       });
 
       restaurantDetail.innerHTML = '';
@@ -167,6 +170,7 @@ const Detail = {
         reviewElement: document.querySelector('.customer-review'),
       });
     } catch (err) {
+      restaurantDetail.style.display = 'flex';
       restaurantDetail.innerHTML = createErrorTemplate(err);
     }
   },
