@@ -7,7 +7,7 @@ import {
   createListFoodTemplate,
   createListDrinkTemplate,
 } from '../template/template-creator';
-import LikeButtonInitiator from '../../utils/like-button-initiator';
+import LikeButtonPresenter from '../../utils/like-button-presenter';
 import AddReview from '../../utils/add-review';
 import CONFIG from '../../globals/config';
 
@@ -71,7 +71,7 @@ const Detail = {
     try {
       const restaurant = await RestaurantDataSource.detailRestaurant(url.id);
 
-      LikeButtonInitiator.init({
+      LikeButtonPresenter.init({
         likeButtonContainer: document.querySelector('#likeButtonContainer'),
         restaurant: {
           id: restaurant.id,

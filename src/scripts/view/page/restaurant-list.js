@@ -17,10 +17,6 @@ const RestaurantList = {
       </div>
     </section>
     `;
-    drawerWithJumbotron.init({
-      jumbotron: document.querySelector('app-jumbotron'),
-      drawer: document.querySelector('#drawer'),
-    });
     const catalog = document.querySelector('.catalog');
     catalog.innerHTML = createRestaurantItemSkeletonTemplate();
     const template = document.getElementById('restaurant-template');
@@ -35,6 +31,11 @@ const RestaurantList = {
   },
 
   async afterRender() {
+    drawerWithJumbotron.init({
+      jumbotron: document.querySelector('app-jumbotron'),
+      drawer: document.querySelector('#drawer'),
+    });
+
     const catalog = document.querySelector('.catalog');
     const restaurantTemplate = document.getElementById('restaurant-template');
     try {

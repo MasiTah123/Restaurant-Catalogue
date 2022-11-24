@@ -1,4 +1,3 @@
-import '@babel/polyfill';
 import 'lazysizes';
 import 'lazysizes/plugins/parent-fit/ls.parent-fit';
 import 'regenerator-runtime'; /* for async await transpile */
