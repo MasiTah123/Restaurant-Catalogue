@@ -20,25 +20,27 @@ class RestaurantDataSource {
   }
 
   static async addReviewCustomer(data) {
-    if (data.name === '') {
+    if (data.name === '' || data.name === undefined) {
       throw new Error('username is needed');
     }
 
-    if (data.review === '') {
+    if (data.review === '' || data.review === undefined) {
       throw new Error('review is needed');
     }
-    const response = await fetch(API_ENDPOINT.REVIEW, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(data),
-    });
-    if (!response.ok) {
-      throw new Error('Failed to add review');
+    try {
+      const response = await fetch(API_ENDPOINT.REVIEW, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+
+      const responseJson = await response.json();
+      return responseJson.customerReviews;
+    } catch (err) {
+      throw new Error(err);
     }
-    const responseJson = await response.json();
-    return responseJson.customerReviews;
   }
 }
 

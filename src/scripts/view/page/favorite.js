@@ -34,7 +34,6 @@ const Favorite = {
 
     try {
       const favorites = await FavoriteRestaurantIdb.getAllRestaurants();
-      console.log(favorites);
       if (favorites.length === 0) {
         catalog.style.display = 'flex';
         catalog.innerHTML = createErrorTemplate('No Favorites Restaurant Found');

@@ -13,7 +13,7 @@ const AddReview = {
 
     addForm.addEventListener('submit', async (event) => {
       event.preventDefault();
-      const Name = document.querySelector('#username').value;
+      const Name = document.querySelector('#username-input').value;
       const Review = document.querySelector('#review-text').value;
 
       const data = this._combineData(id, Name, Review);

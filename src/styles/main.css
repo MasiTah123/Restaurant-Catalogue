@@ -91,7 +91,7 @@ app-header {
   padding: 10px 15px;
   margin-left: 10px ;
   background: white;
-  width: 80%;
+  width: 100%;
 }
 
 .detail-content h3, .restaurant-menu-section h3, .restaurant-review-section h3 {
@@ -188,11 +188,11 @@ app-header {
 #add-form {
   width: 100%;
   height: 350px;
-  opacity: 1;
+  display: visible;
 }
 
 #add-form.close{
-  opacity: 0;
+  display: none;
 }
 
 .add-review {

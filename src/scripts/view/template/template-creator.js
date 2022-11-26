@@ -104,7 +104,7 @@ const createDetailRestaurantSkeletonTemplate = () => `
         <button class="pop-up-form loading">Tambah Review</button>
         <form action="" id="add-form" class="add-form close">
           <label for="username" class="label-input">Username</label>
-          <input type="text" class="form-input" id="username" placeholder="Masukkan nama user" autocomplete="off">
+          <input type="text" class="form-input" id="username-input" placeholder="Masukkan nama user" autocomplete="off">
           <label for="review-text" class="label-input">Review</label>
           <textarea class="form-input" id="review-text" placeholder="Pendapat anda terkait restoran ini" row="20"></textarea>
           <button type="submit" class="btn-submit">TAMBAH</button>
