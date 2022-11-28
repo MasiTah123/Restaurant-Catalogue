@@ -43,9 +43,9 @@ const Favorite = {
       favorites.forEach((FavoriteRestaurant) => {
         const div = restaurantTemplate.content.cloneNode(true);
 
-        div.querySelector('#source-large').srcset = `${CONFIG.BASE_IMAGE_URL_LARGE + FavoriteRestaurant.pictureId}`;
-        div.querySelector('#source-small').srcset = `${CONFIG.BASE_IMAGE_URL_SMALL + FavoriteRestaurant.pictureId}`;
-        div.querySelector('.img-thumb').src = `${CONFIG.BASE_IMAGE_URL_MEDIUM + FavoriteRestaurant.pictureId}`;
+        div.querySelector('#source-large').setAttribute('data-srcset', `${CONFIG.BASE_IMAGE_URL_LARGE + FavoriteRestaurant.pictureId}`);
+        div.querySelector('#source-small').setAttribute('data-srcset', `${CONFIG.BASE_IMAGE_URL_SMALL + FavoriteRestaurant.pictureId}`);
+        div.querySelector('.img-thumb').setAttribute('data-src',`${CONFIG.BASE_IMAGE_URL_MEDIUM + FavoriteRestaurant.pictureId}`);
         div.querySelector('.img-thumb').alt = `Gambar ${FavoriteRestaurant.name}`;
         div.querySelector('.img-thumb').classList.remove('loading');
         div.querySelector('.restaurant-item-rating').innerHTML = `<i class="fa-solid fa-star"></i>${FavoriteRestaurant.rating}`;
