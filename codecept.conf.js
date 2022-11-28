@@ -1,10 +1,11 @@
-const { setHeadlessWhen, setCommonPlugins } = require('@codeceptjs/configure');
+const { setHeadlessWhen, setCommonPlugins, setSharedCookies } = require('@codeceptjs/configure');
 // turn on headless mode when running with HEADLESS=true environment variable
 // export HEADLESS=true && npx codeceptjs run
 setHeadlessWhen(process.env.HEADLESS);
 
 // enable all common plugins https://github.com/codeceptjs/configure#setcommonplugins
 setCommonPlugins();
+setSharedCookies();
 
 /** @type {CodeceptJS.MainConfig} */
 exports.config = {
@@ -16,6 +17,10 @@ exports.config = {
       show: true,
       windowSize: '1200x900',
     },
+    REST: {
+      endpoint: 'https://restaurant-api.dicoding.dev/',
+    },
+    JSONResponse: {},
   },
   include: {
     I: './steps_file.js',
