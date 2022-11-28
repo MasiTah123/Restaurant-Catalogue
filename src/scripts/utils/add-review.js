@@ -13,7 +13,7 @@ const AddReview = {
 
     addForm.addEventListener('submit', async (event) => {
       event.preventDefault();
-      const Name = document.querySelector('#username').value;
+      const Name = document.querySelector('#username-input').value;
       const Review = document.querySelector('#review-text').value;
 
       const data = this._combineData(id, Name, Review);
@@ -28,6 +28,7 @@ const AddReview = {
             icon: 'success',
           }));
 
+        addForm.reset();
         this._renderReviewAfterAdding(addedReview, reviewElement);
       } catch (err) {
         import('sweetalert2')
@@ -37,6 +38,8 @@ const AddReview = {
             text: `${err}`,
             icon: 'error',
           }));
+
+        addForm.reset();
       }
     });
   },
@@ -47,9 +50,9 @@ const AddReview = {
     reviews.forEach((review) => {
       reviewList.innerHTML += `
       <div class="review">
-        <h4>${review.name}</h4>
-        <p class="review-date">${review.date}</p>
-        <p class="review-text">${review.review}</p>
+        <h4 class="label" id="username">${review.name}</h4>
+        <div class="review-date" id="date">${review.date}</div>
+        <div class="review-text" id="review-customer">${review.review}</div>
       </div>
       `;
     });

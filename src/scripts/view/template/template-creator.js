@@ -1,92 +1,171 @@
-import CONFIG from '../../globals/config';
-
+/* eslint-disable max-len */
 const createErrorTemplate = (message) => `
-  <h3>${message}</h3>
+  <h3 id="error-text">${message}</h3>
 `;
 
-const createRestaurantItemTemplate = (restaurant) => `
-<article class="restaurant-item">
-  <div class="restaurant-item-upper">
-    <img class="restaurant-item-thumbnail" src="${CONFIG.BASE_IMAGE_URL + restaurant.pictureId}"
-    alt="Gambar ${restaurant.name}">
-    <p class="restaurant-item-rating"><i class="fa-solid fa-star"></i>${restaurant.rating}
-    </p>
-  </div>
-  <div class="restaurant-item-content">
-    <h3 class="restaurant-item-title"><a href="#/detail/${restaurant.id}">${restaurant.name}</a></h3>
-    <p class="restaurant-item-city">City: <span class="city-restaurant">${restaurant.city}</span> </p>
-    <p class="restaurant-item-description">${restaurant.description}</p>
-  </div>
-</article>
+const createRestaurantItemSkeletonTemplate = () => `
+  <template id="restaurant-template">  
+    <article class="restaurant-item">
+      <div class="restaurant-item-upper">
+        <picture class="restaurant-item-thumbnail lazyload">
+          <source id="source-large" class="lazyload" media="(min-width: 2000px)">
+          <source id="source-small" class="lazyload" media="(max-width: 480px)">
+          <img class="img-thumb lazyload loading">
+        </picture>
+
+        <p class="restaurant-item-rating">
+          <div></div>
+        </p>
+      </div>
+      <div class="restaurant-item-content">
+        <h3 class="restaurant-item-title">
+          <div class="loading loading-title"></div>
+        </h3>
+        <div class="restaurant-item-city">
+          <div class="loading loading-city"></div>
+        </div>
+        <div class="restaurant-item-description">
+          <div class="loading loading-description"></div>
+        </div>
+      </div>
+    </article>
+  </template>
 `;
 
-const createDetailRestaurantTemplate = (restaurant) => `
-  <h2 id="catalog-head" class="detail-head">${restaurant.name}</h2>
-  <div class="detail">
-    <img src="${CONFIG.BASE_IMAGE_URL + restaurant.pictureId}" alt="Gambar ${restaurant.name}" class="restaurant-poster">
-    <div class="detail-content">
-      <h3>Information</h3> 
-      <div class="restaurant-info">
-        <h4>Kota</h4>
-        <p>${restaurant.city}</p>
-        <h4>Alamat</h4>
-        <p>${restaurant.address}</p>
-        <h4>Deskripsi</h4>
-        <p>${restaurant.description}</p>
-      </div>
-    </div>
-  </div>
-  <div class="restaurant-menu-section">
-    <h3>Menu Restaurant</h3>
-    <div class="restaurant-menu">
-      <div class="restaurant-food">
-        <h4>Makanan</h4>
-        <ul class="food-list">
-          
-        </ul>
-      </div>
-      <div class="restaurant-drink">
-        <h4>Minuman</h4>
-        <ul class="drink-list">
+const createDetailRestaurantSkeletonTemplate = () => `
+  <template id="detail-template">
+    <h2 id="catalog-head" class="detail-head">
+      <div class="loading loading-title-detail"></div>
+    </h2>
 
-        </ul>
+    <div class="detail">
+      <picture class="restaurant-poster lazyload">
+        <source id="source-large" media="(min-width: 2000px)">
+        <source id="source-small" media="(max-width: 600px)">
+        <img id="img-poster" class="lazyload loading" >
+      </picture>
+      <div class="detail-content">
+        <h3 id="information">
+          <div class="loading loading-title-info"></div>
+        </h3> 
+        <div class="restaurant-info">
+          <h4 id="kota">
+            <div class="loading loading-title-h4"></div>
+          </h4>
+          <div id="kota-content" class="text-detail">
+            <div class="loading loading-location"></div>
+          </div>
+          <h4 id="alamat">
+            <div class="loading loading-title-h4"></div>
+          </h4>
+          <div id="alamat-content" class="text-detail">
+            <div class="loading loading-location"></div>
+          </div>
+          <h4 id="deskripsi">
+            <div class="loading loading-title-h4"></div>
+          </h4>
+          <div id="deskripsi-content" class="text-detail">
+            <div class="loading loading-description-detail"></div>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="restaurant-review-section">
-    <h3>Review Pelanggan</h3>
-    <div class="customer-review">
-                                           
+    <div class="restaurant-menu-section">
+      <h3 id="menu-restaurant">
+        <div class="loading loading-title-menu"></div>
+      </h3> 
+      <div class="restaurant-menu">
+        <div class="restaurant-food">
+          <h4 id="makanan">
+            <div class="loading loading-title-food"></div>
+          </h4>
+          <ul class="food-list">
+            
+          </ul>
+        </div>
+        <div class="restaurant-drink">
+          <h4 id="minuman">
+            <div class="loading loading-title-drink"></div>
+          </h4>
+          <ul class="drink-list">
+
+          </ul>
+        </div>
+      </div>
     </div>
-    <div class="add-review">
-      <button class="pop-up-form">Tambah Review</button>
-      <form action="" id="add-form" class="add-form close">
-        <label for="username" class="label-input">Username</label>
-        <input type="text" class="form-input" id="username" placeholder="Masukkan nama user" autocomplete="off">
-        <label for="review-text" class="label-input">Review</label>
-        <textarea class="form-input" id="review-text" placeholder="Pendapat anda terkait restoran ini" row="20"></textarea>
-        <button type="submit" class="btn-submit">TAMBAH</button>
-      </form>
+    <div class="restaurant-review-section">
+      <h3 id="review-pelanggan-title">
+        <div class="loading loading-title-review"></div>
+      </h3>
+      <div class="customer-review">
+                                            
+      </div>
+      <div class="add-review">
+        <button class="pop-up-form loading">Tambah Review</button>
+        <form action="" id="add-form" class="add-form close">
+          <label for="username" class="label-input">Username</label>
+          <input type="text" class="form-input" id="username-input" placeholder="Masukkan nama user" autocomplete="off">
+          <label for="review-text" class="label-input">Review</label>
+          <textarea class="form-input" id="review-text" placeholder="Pendapat anda terkait restoran ini" row="20"></textarea>
+          <button type="submit" class="btn-submit">TAMBAH</button>
+        </form>
+      </div>
     </div>
-  </div>
+  </template>
+
+`;
+
+const createReviewCustomerTemplate = () => `
+  <template id="review-template">  
+    <div class="review">
+      <h4 class="label" id="username">
+        <div class="loading loading-username"></div>
+      </h4>
+      <div class="review-date" id="date">
+        <div class="loading loading-date"></div>
+      </div>
+      <div class="review-text" id="review-customer">
+        <div class="loading loading-review"></div>
+      </div>
+    </div>
+  </template>
+`;
+
+const createListFoodTemplate = () => `
+  <template id="food-list-template">  
+    <li class="list-food">
+      <div class="loading loading-list"></div>
+    </li>
+  </template>
+`;
+
+const createListDrinkTemplate = () => `
+  <template id="drink-list-template">  
+    <li class="list-drink">
+      <div class="loading loading-list"></div>
+    </li>
+  </template>
 `;
 
 const createLikeButtonTemplate = () => `
-  <button aria-label="like this movie" id="likeButton" class="like">
+  <button aria-label="like this restaurant" id="likeButton" class="like">
      <i class="fa-regular fa-heart" aria-hidden="true"></i>
   </button>
 `;
 
 const createLikedButtonTemplate = () => `
-  <button aria-label="unlike this movie" id="likeButton" class="like">
+  <button aria-label="unlike this restaurant" id="likeButton" class="like">
     <i class="fa-solid fa-heart" aria-hidden="true"></i>
   </button>
 `;
 
 export {
-  createRestaurantItemTemplate,
-  createDetailRestaurantTemplate,
+  createRestaurantItemSkeletonTemplate,
+  createDetailRestaurantSkeletonTemplate,
   createLikeButtonTemplate,
   createLikedButtonTemplate,
   createErrorTemplate,
+  createReviewCustomerTemplate,
+  createListFoodTemplate,
+  createListDrinkTemplate,
 };

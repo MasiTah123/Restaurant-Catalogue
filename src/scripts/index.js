@@ -1,12 +1,9 @@
+import 'lazysizes';
+import 'lazysizes/plugins/parent-fit/ls.parent-fit';
 import 'regenerator-runtime'; /* for async await transpile */
-import '../styles/main.css';
-import '../styles/responsive.css';
 import './component/app-header';
 import './component/app-nav';
-
-import '@fortawesome/fontawesome-free/js/fontawesome';
-import '@fortawesome/fontawesome-free/js/solid';
-import '@fortawesome/fontawesome-free/js/regular';
+import './component/app-footer';
 
 import App from './view/app';
 import swRegister from './utils/sw-register';
@@ -17,11 +14,13 @@ const app = new App({
   content: document.querySelector('#mainContent'),
 });
 
-window.addEventListener('hashchange', () => {
+window.addEventListener('hashchange', async () => {
+  await app._createSkeleton();
   app.renderPage();
 });
 
 window.addEventListener('load', async () => {
+  await app._createSkeleton();
   app.renderPage();
   swRegister();
 });

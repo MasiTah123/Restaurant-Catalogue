@@ -1,34 +1,64 @@
 import FavoriteRestaurantIdb from '../../../data/favorite-restaurant-idb';
-import { createRestaurantItemTemplate } from '../template/template-creator';
+import { createErrorTemplate, createRestaurantItemSkeletonTemplate } from '../template/template-creator';
+import CONFIG from '../../globals/config';
 
 const Favorite = {
-  async render() {
-    return `
+  async render(element) {
+    // eslint-disable-next-line no-param-reassign
+    element.innerHTML = `
     <section class="restaurant-catalog favorite" id="restaurant-catalog">
       <h2 id="catalog-head" class="catalog-head">Favorite Restaurant</h2>
-      <div class="preloader-item">
-        <div class="lds-ring">
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-        </div>
-      </div>
+      <link rel="preconnect" href="https://restaurant-api.dicoding.dev/">
       <div class="catalog">
         
       </div>
     </section>
   `;
+    const catalog = document.querySelector('.catalog');
+    catalog.innerHTML = createRestaurantItemSkeletonTemplate();
+    const template = document.getElementById('restaurant-template');
+    try {
+      const restaurant = await FavoriteRestaurantIdb.getAllRestaurants();
+      for (let i = 0; i < restaurant.length; i += 1) {
+        catalog.append(template.content.cloneNode(true));
+      }
+    } catch (err) {
+      catalog.style.display = 'flex';
+      catalog.innerHTML = createErrorTemplate(err);
+    }
   },
 
   async afterRender() {
-    const favorites = await FavoriteRestaurantIdb.getAllRestaurants();
-    document.querySelector('.preloader-item').style.display = 'none';
     const catalog = document.querySelector('.catalog');
+    const restaurantTemplate = document.getElementById('restaurant-template');
 
-    favorites.forEach((FavoriteRestaurant) => {
-      catalog.innerHTML += createRestaurantItemTemplate(FavoriteRestaurant);
-    });
+    try {
+      const favorites = await FavoriteRestaurantIdb.getAllRestaurants();
+      if (favorites.length === 0) {
+        catalog.style.display = 'flex';
+        catalog.innerHTML = createErrorTemplate('No Favorites Restaurant Found');
+        return;
+      }
+      catalog.innerHTML = '';
+      favorites.forEach((FavoriteRestaurant) => {
+        const div = restaurantTemplate.content.cloneNode(true);
+
+        div.querySelector('#source-large').srcset = `${CONFIG.BASE_IMAGE_URL_LARGE + FavoriteRestaurant.pictureId}`;
+        div.querySelector('#source-small').srcset = `${CONFIG.BASE_IMAGE_URL_SMALL + FavoriteRestaurant.pictureId}`;
+        div.querySelector('.img-thumb').src = `${CONFIG.BASE_IMAGE_URL_MEDIUM + FavoriteRestaurant.pictureId}`;
+        div.querySelector('.img-thumb').alt = `Gambar ${FavoriteRestaurant.name}`;
+        div.querySelector('.img-thumb').classList.remove('loading');
+        div.querySelector('.restaurant-item-rating').innerHTML = `<i class="fa-solid fa-star"></i>${FavoriteRestaurant.rating}`;
+        div.querySelector('.restaurant-item-title').innerHTML = `<a href="#/detail/${FavoriteRestaurant.id}">${FavoriteRestaurant.name}</a>`;
+        div.querySelector('.restaurant-item-city').innerHTML = `City: <span class="city-restaurant">${FavoriteRestaurant.city}</span> `;
+        div.querySelector('.restaurant-item-description').textContent = FavoriteRestaurant.description;
+
+        catalog.append(div);
+      });
+    } catch (err) {
+      catalog.style.display = 'flex';
+      catalog.innerHTML = createErrorTemplate(err);
+    }
   },
 };
 

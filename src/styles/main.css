@@ -31,9 +31,13 @@ app-header {
   main content
 */
 
+#error-text {
+  margin: 0 auto;
+  color: red;
+}
 
 .restaurant-catalog, .restaurant-detail{
-  width: 85%;
+  width: 75%;
   position: relative;
   margin-left: auto;
   margin-right: auto;
@@ -53,15 +57,21 @@ app-header {
   letter-spacing: 4px;
   color: #4e3c72;
   text-decoration: underline;
+  min-height: 35px;
 }
 
 .restaurant-detail {
   margin-top: 20px;
 }
 
-.restaurant-poster {
-  width: 50%;
-  height: 50%;
+.restaurant-poster{
+  width: 100%;
+  height: 300px;
+}
+
+.restaurant-poster img{
+  width: 100%;
+  height: 300px;
 }
 
 /*
@@ -81,25 +91,32 @@ app-header {
   padding: 10px 15px;
   margin-left: 10px ;
   background: white;
+  width: 100%;
 }
 
 .detail-content h3, .restaurant-menu-section h3, .restaurant-review-section h3 {
   font-size: 30px;
   margin-bottom: 25px;
   color: #523196;
+  min-height: 40px;
 }
 
 .restaurant-info h4, .restaurant-menu-section h4 {
   font-size: 22px;
-  margin-bottom: 10px; 
   color: #7956c0;
+  min-height: 40px;
 }
 
-.restaurant-info p {
+.text-detail {
   font-size: 18px;
   margin-bottom: 12px;
   text-align: justify;
   line-height: 24px;
+  min-height: 25px;
+}
+
+#deskripsi-content {
+  min-height: 375px;
 }
 
 .restaurant-menu-section, .restaurant-review-section, .add-review {
@@ -109,19 +126,21 @@ app-header {
   align-items: center;
   background: white;
   margin: 15px auto;
-  padding: 15px;
+  padding: 20px;
 }
+
 
 .restaurant-menu {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  width: 60%;
+  width: 80%;
 }
 
 .restaurant-menu li{
   list-style: none;
   font-size: 20px;
+  min-height: 27px;
   margin-bottom: 12px;
 }
 
@@ -141,7 +160,7 @@ app-header {
   border-radius: 10px;
 }
 
-.review h4, .label-input {
+.label, .label-input {
   font-size: 22px;
   color: #7956c0;
   width: 100%;
@@ -167,6 +186,8 @@ app-header {
   Add Review
 */
 #add-form {
+  width: 100%;
+  height: 350px;
   display: visible;
 }
 
@@ -224,12 +245,13 @@ app-header {
   padding: 15px;
   border-radius: 7px;
   border: none;
-  width: 30%;
+  width: 45%;
   background: rgb(83, 6, 155);
 
   font-size: 16px;
   font-weight: 700;
   color: white;
+  margin-top: auto;
   letter-spacing: 2px;
   margin-bottom: 10px;
   margin-left: auto;
@@ -238,13 +260,6 @@ app-header {
 .btn-submit:hover {
   background: rgb(129, 52, 201);
 }
-
-
-
-
-
-
-
 
 /*
   Restaurant Item
@@ -262,12 +277,12 @@ app-header {
   position: relative;
   border: 1px solid white;
   border-radius: 12px;
-  background: #fbd6e4;
-  
+  background: #fbd6e4;  
 }
 
 .restaurant-item-upper{
   position: relative;
+  height: 225px;
 }
 
 .restaurant-item-content {
@@ -291,14 +306,20 @@ app-header {
 
 }
 
-.restaurant-item-thumbnail {
+.restaurant-item-thumbnail{
   width: 100%;
-  height: 300px;
+  height: 225px;
+}
+
+.restaurant-item-thumbnail img{
+  width: 100%;
+  height: 100%;
 }
 
 .restaurant-item-title {
   font-size: 20px;
-  padding: 10px 12px 0px 0px;
+  padding: 0px 12px 0px 0px;
+  margin-bottom: 5px;
 }
 
 .restaurant-item-title a{
@@ -308,18 +329,9 @@ app-header {
 }
 
 .restaurant-item-city {
-  font-size: 14px;
+  height: 19px;
+  font-size: 80%;
   margin-bottom: 10px;
-}
-
-.id-restaurant {
-  color: rgb(94, 106, 115);
-  margin-right: 10px;
-}
-
-.id-restaurant:hover {
-  text-decoration: underline;
-  cursor: pointer;
 }
 
 .city-restaurant {
@@ -328,10 +340,11 @@ app-header {
 }
 
 .restaurant-item-description {
-  line-height: 20px;
+  line-height: 16px;
   text-align: justify;
   overflow: hidden;
-  max-height: 200px;
+  height: 100px;
+  font-size: 80%;
 }
 
 /*
@@ -362,68 +375,135 @@ app-header {
 }
 
 /*
-  footer
-*/
-
-footer{
-  background: #62557c;
-  align-items: center;
-  justify-content: center;
-  padding: 25px;
-  margin-top: 20px;
-}
-
-.copyright-content {
-  font-size: 24px;
-  text-align: center;
-  color: white;
-}
-
-/*
   Loader
 */
 
-.lds-ring {
-  display: inline-block;
-  position: relative;
-  width: 48px;
-  height: 48px;
-  margin: 8px auto;
+
+.loading {
+  background-color: #b46cac;
+  -webkit-animation: skeleton-loading 1s linear infinite alternate;
+          animation: skeleton-loading 1s linear infinite alternate;
 }
-.lds-ring div {
-  box-sizing: border-box;
-  display: block;
-  position: absolute;
-  width: 32px;
-  height: 32px;
-  margin: 8px;
-  border: 5px solid #fcf;
-  border-radius: 50%;
-  animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
-  border-color: rgb(25, 1, 116) transparent transparent transparent;
-}
-.lds-ring div:nth-child(1) {
-  animation-delay: -0.45s;
-}
-.lds-ring div:nth-child(2) {
-  animation-delay: -0.3s;
-}
-.lds-ring div:nth-child(3) {
-  animation-delay: -0.15s;
-}
-@keyframes lds-ring {
+
+@-webkit-keyframes skeleton-loading {
   0% {
-    transform: rotate(0deg);
+    opacity: 1;
   }
   100% {
-    transform: rotate(360deg);
+    opacity: 0.5;
   }
 }
 
-.preloader-item {
-  display: flex;
+@keyframes skeleton-loading {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.5;
+  }
+}
+
+.loading-title {
+  width: 75%;
+  height: 44px;
+}
+
+.loading-location {
+  margin-bottom: 12px;
+  line-height: 24px;
+  width: 100%;
+  height: 25px;
+}
+
+.loading-city {
+  height: 19px;
+  width: 150px;
+}
+
+.loading-description {
+  width: 100%;
+  height: 100px;
+}
+
+.loading-title-h4 {
+  margin-bottom: 10px ;
+  width: 50%;
+  height: 40px;
+}
+
+.loading-title-detail {
+  width: 30%;
+  height: 36px;
+  margin: 0 auto;
+}
+
+.loading-title-info {
+  width: 100%;
+  height: 40px;
+}
+
+.loading-description-detail {
+  width: 100%;
+  height: 375px;
+}
+
+.loading-title-h3 {
+  width: 40%;
+  height: 30px;
+}
+
+.loading-title-menu, .loading-title-review {
+  width: 245px;
+  height: 40px;
+}
+
+.loading-title-food, .loading-title-drink {
+  width: 150px;
+  height: 35px;
+}
+
+.loading-list {
+  width: 150px;
+  height: 27px;
+  margin-bottom: 12px;
+}
+
+.loading-username {
+  width: 100px;
+  height: 30px;
+  margin-bottom: 5px;
+}
+
+.loading-date {
+  width: 175px;
+  height: 20px;
+  margin-bottom: 10px;
+}
+
+.loading-review {
+  width: 100%;
+  height: 25px;
+}
+
+/*
+  Custom Scroll Bar
+*/
+
+::-webkit-scrollbar {
+  width: 4px;
 }
 
 
+::-webkit-scrollbar-track {
+  background: rgb(225, 196, 255);
+}
 
 
+::-webkit-scrollbar-thumb {
+  background: #2c0029;
+}
+
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(150, 118, 186);
+}
