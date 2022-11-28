@@ -40,8 +40,8 @@ const createDetailRestaurantSkeletonTemplate = () => `
 
     <div class="detail">
       <picture class="restaurant-poster lazyload">
-        <source id="source-large" media="(min-width: 2000px)">
-        <source id="source-small" media="(max-width: 600px)">
+        <source class="lazyload" id="source-large" media="(min-width: 2000px)">
+        <source class="lazyload" id="source-small" media="(max-width: 600px)">
         <img id="img-poster" class="lazyload loading" >
       </picture>
       <div class="detail-content">
