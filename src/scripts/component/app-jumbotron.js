@@ -55,12 +55,12 @@ class AppJumbotron extends HTMLElement {
       }
     </style>
     <div class="jumbotron">
-      <picture class="jumbotron-img">
-        <source media="(max-width: 1200px)" type="image/webp" srcset="./images/heros/hero-image_2-small.webp">
-        <source media="(max-width: 1200px)" type="image/jpeg" srcset="./images/heros/hero-image_2-small.jpg">
-        <source type="image/webp" srcset="./images/heros/hero-image_2-large.webp">
-        <source type="image/jpeg" srcset="./images/heros/hero-image_2-large.jpg">
-        <img src="./images/heros/hero-image_2-large.jpg" alt="">
+      <picture class="jumbotron-img lazyload">
+        <source class="lazyload" media="(max-width: 1200px)" type="image/webp" srcset="./images/heros/hero-image_2-small.webp">
+        <source class="lazyload" media="(max-width: 1200px)" type="image/jpeg" srcset="./images/heros/hero-image_2-small.jpg">
+        <source class="lazyload" type="image/webp" srcset="./images/heros/hero-image_2-large.webp">
+        <source class="lazyload" type="image/jpeg" srcset="./images/heros/hero-image_2-large.jpg">
+        <img class="lazyload" src="./images/heros/hero-image_2-large.jpg" alt="">
       </picture>
       <div class="jumbotron-inner">
         <h2 class="jumbotron-head">Welcome to <span class="restaurant-name">ReFind</span> (Restaurant Finder)</h2>
