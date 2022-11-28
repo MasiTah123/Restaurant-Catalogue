@@ -29,14 +29,14 @@ const RestaurantList = {
       catalog.style.display = 'flex';
       catalog.innerHTML = createErrorTemplate(err);
     }
-  },
 
-  async afterRender() {
     drawerWithJumbotron.init({
       jumbotron: document.querySelector('app-jumbotron'),
       drawer: document.querySelector('#drawer'),
     });
+  },
 
+  async afterRender() {
     const catalog = document.querySelector('.catalog');
     const restaurantTemplate = document.getElementById('restaurant-template');
     try {
