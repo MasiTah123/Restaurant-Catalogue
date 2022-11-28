@@ -156,7 +156,7 @@ const Detail = {
       reviews.forEach((review) => {
         const reviewDiv = reviewListTemplate.content.cloneNode(true);
 
-        reviewDiv.getElementById('username').innerHTML = review.name;
+        reviewDiv.querySelector('.username').innerHTML = review.name;
         reviewDiv.getElementById('date').innerHTML = review.date;
         reviewDiv.getElementById('review-customer').innerHTML = review.review;
 
