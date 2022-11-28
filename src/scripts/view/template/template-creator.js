@@ -118,7 +118,7 @@ const createDetailRestaurantSkeletonTemplate = () => `
 const createReviewCustomerTemplate = () => `
   <template id="review-template">  
     <div class="review">
-      <h4 class="label" id="username">
+      <h4 class="label username">
         <div class="loading loading-username"></div>
       </h4>
       <div class="review-date" id="date">

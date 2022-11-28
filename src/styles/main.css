@@ -31,6 +31,10 @@ app-header {
   main content
 */
 
+.catalog { 
+  min-height: 500px;
+}
+
 #error-text {
   margin: 0 auto;
   color: red;
