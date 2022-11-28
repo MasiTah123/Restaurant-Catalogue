@@ -92,9 +92,9 @@ const Detail = {
 
       // insert data to detail template
       divDetail.getElementById('catalog-head').innerHTML = restaurant.name;
-      divDetail.getElementById('source-large').scrset = `${CONFIG.BASE_IMAGE_URL_LARGE + restaurant.pictureId}`;
-      divDetail.getElementById('source-small').scrset = `${CONFIG.BASE_IMAGE_URL_SMALL + restaurant.pictureId}`;
-      divDetail.getElementById('img-poster').src = `${CONFIG.BASE_IMAGE_URL_MEDIUM + restaurant.pictureId}`;
+      divDetail.getElementById('source-large').setAttribute('data-srcset',`${CONFIG.BASE_IMAGE_URL_LARGE + restaurant.pictureId}`);
+      divDetail.getElementById('source-small').setAttribute('data-srcset',`${CONFIG.BASE_IMAGE_URL_SMALL + restaurant.pictureId}`);
+      divDetail.getElementById('img-poster').setAttribute('data-src',`${CONFIG.BASE_IMAGE_URL_MEDIUM + restaurant.pictureId}`);
       divDetail.getElementById('img-poster').alt = `Gambar ${restaurant.name}`;
       divDetail.getElementById('img-poster').classList.remove('loading');
       divDetail.getElementById('information').innerHTML = 'Information';
